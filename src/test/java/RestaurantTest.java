@@ -8,6 +8,9 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class RestaurantTest {
     Restaurant restaurant;
     //REFACTOR ALL THE REPEATED LINES OF CODE
@@ -65,4 +68,18 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void calculate_total_cost_should_return_zero_for_empty_menu(){
+      int emptyList = restaurant.calculateTotalOrderValue(new ArrayList<String>());
+      assertEquals(0, emptyList);
+    }
+
+    @Test
+    public void calculate_total_cost_should_return_zero_correct_value_of_selected_items(){
+        List<String> orderList = new ArrayList<String>();
+        orderList.add("Sweet corn soup");
+        orderList.add("Vegetable lasagne");
+        assertEquals(388, restaurant.calculateTotalCost(orderList));
+    }
 }
