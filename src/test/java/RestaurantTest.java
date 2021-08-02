@@ -39,7 +39,7 @@ class RestaurantTest {
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
       //WRITE UNIT TEST CASE HERE
       restaurant = Mockito.spy(restaurant);
-      LocalTime closedTime = LocalTime.parse("8:00:00");
+      LocalTime closedTime = LocalTime.parse("10:00:00");
       Mockito.when(restaurant.getCurrentTime()).thenReturn(closedTime);
       assertEquals(false, restaurant.isRestaurantOpen());
     }
@@ -71,7 +71,7 @@ class RestaurantTest {
 
     @Test
     public void calculate_total_cost_should_return_zero_for_empty_menu(){
-      int emptyList = restaurant.calculateTotalOrderValue(new ArrayList<String>());
+      int emptyList = restaurant.calculateTotalCost(new ArrayList<String>());
       assertEquals(0, emptyList);
     }
 
